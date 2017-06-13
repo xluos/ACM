@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1492605185 source:c:\users\徐帅武\onedrive\chengxu\动态规划\子串和\main.cpp
+	<iostream>
+	<cstring>
+	<cstdio>
+

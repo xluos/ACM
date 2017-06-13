@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1484118602 source:c:\users\徐帅武\onedrive\chengxu\语言入门\因式分解\main.cpp
+	<iostream>
+	<stdio.h>
+	<math.h>
+

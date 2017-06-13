@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1485431009 source:c:\users\徐帅武\onedrive\chengxu\语言入门\国王的魔镜\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+

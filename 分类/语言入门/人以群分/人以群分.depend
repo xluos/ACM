@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1490749841 source:c:\users\徐帅武\onedrive\chengxu\语言入门\人以群分\main.cpp
+	<iostream>
+	<stdio.h>
+	<algorithm>
+

@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1492044737 source:c:\users\徐帅武\onedrive\chengxu\数据结构\中缀转后缀\main.cpp
+	<iostream>
+	<stdio.h>
+	<map>
+	<sstream>
+	<cstdio>
+	<cstring>
+	<stack>
+

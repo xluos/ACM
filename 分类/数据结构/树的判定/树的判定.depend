@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1492405095 source:c:\users\徐帅武\onedrive\chengxu\数据结构\树的判定\main.cpp
+	<iostream>
+	<cstdio>
+	<set>
+	<cstring>
+	<map>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1492472346 source:c:\users\徐帅武\onedrive\chengxu\数据结构\合纵连横\main.cpp
+	<iostream>
+	<cstdio>
+	<cstring>
+

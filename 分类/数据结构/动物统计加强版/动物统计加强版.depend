@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1492490691 source:c:\users\徐帅武\onedrive\chengxu\数据结构\动物统计加强版\main.cpp
+	<cstdio>
+	<string.h>
+	<stdlib.h>
+

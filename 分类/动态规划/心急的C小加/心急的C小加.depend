@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1493191359 source:c:\users\徐帅武\onedrive\chengxu\动态规划\心急的c小加\main.cpp
+	<iostream>
+	<stdio.h>
+	<algorithm>
+	<string.h>
+	<cstdio>
+

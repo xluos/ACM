@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1493000033 source:c:\users\徐帅武\onedrive\chengxu\动态规划\苹果\main.cpp
+	<iostream>
+	<cstdio>
+	<bits/stdc++.h>
+
