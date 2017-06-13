@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1484058586 source:c:\users\徐帅武\onedrive\chengxu\语言入门\蛇形添数\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+

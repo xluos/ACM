@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1487851883 source:c:\users\徐帅武\onedrive\chengxu\贪心问题\喷泉问题（一）\main.cpp
+	<iostream>
+	<stdio.h>
+	<math.h>
+	<algorithm>
+

@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1485430870 source:c:\users\ÐìË§Îä\onedrive\chengxu\ce_shi\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+
+1485430870 
+
+1486038337 source:/home/xu/Chengxu/ce_shi/main.cpp
+	<stdio.h>
+	<math.h>
+

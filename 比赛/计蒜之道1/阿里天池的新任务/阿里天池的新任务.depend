@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1495284533 source:c:\users\徐帅武\onedrive\chengxu\计蒜之道1\阿里天池的新任务\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+

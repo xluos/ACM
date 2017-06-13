@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1489205695 source:c:\users\徐帅武\onedrive\chengxu\语言入门\查验身份证\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+

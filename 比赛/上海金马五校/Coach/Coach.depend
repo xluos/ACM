@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1495801897 source:c:\users\徐帅武\onedrive\chengxu\上海金马五校\coach\main.cpp
+	<iostream>
+	<cstdio>
+	<cstring>
+	<map>
+

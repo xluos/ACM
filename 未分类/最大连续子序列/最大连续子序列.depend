@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1461687888 source:c:\users\徐大大\onedrive\chengxu\最大连续子序列\main.cpp
+	<iostream>
+	<cstdio>
+	<string.h>
+

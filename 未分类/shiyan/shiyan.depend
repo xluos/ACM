@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1493898389 source:c:\users\ÐìË§Îä\onedrive\chengxu\shiyan\main.cpp
+	<iostream>
+	<string.h>
+	<stdlib.h>
+
+1493898389 
+
+1493904385 source:/home/xu/Chengxu/shiyan/main.cpp
+	<iostream>
+	<windows.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+

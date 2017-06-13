@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1492928115 source:c:\users\徐帅武\onedrive\chengxu\河南工大校赛重现\饶学妹的比赛\main.cpp
+	<iostream>
+	<cstdio>
+	<cstring>
+	<algorithm>
+

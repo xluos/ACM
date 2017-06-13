@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1492931159 source:c:\users\徐帅武\onedrive\chengxu\河南工大校赛重现\小天使改名\main.cpp
+	<iostream>
+	<cstdio>
+	<algorithm>
+	<cstring>
+
