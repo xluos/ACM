@@ -4,44 +4,43 @@ using namespace std;
 string DAY[7]={"MON","TUE","TUE","THU","FRI","SAT","SUN"};
 int main()
 {
-    char s[200];
+    char s[200],s2[100];
     scanf("%s",s);
-    int l=strlen(s),flag=0,hh,mm,day;
-    scanf("%s",s+l);
-    l=strlen(s);
+    int l=strlen(s),l2,flag=0,hh,mm,day;
+    scanf("%s",s2);
+    l2=strlen(s2);
     map<char, int>mp;
     for(int i=0;i<l;i++)
+        mp[s[i]]=1;
+    for(int i=0;i<l2;i++)
     {
-        if(mp[s[i]])
+        if(s2[i]==s[i])
         {
-            if(!flag)
+            if(!flag&&s2[i]>='A'&&s2[i]<='Z')
             {
-                day=s[i]-'A';
-                flag++;
+                flag=1;
+                day=s2[i]-'A';
             }
-            else
+            else if(flag&&(s2[i]>='A'&&s2[i]<='N'||s2[i]>='0'&&s2[i]<='9'))
             {
                 if(s[i]>='0'&&s[i]<='9')
-                    hh=s[i]-'0';
+                    hh = s2[i]-'0';
                 else
-                    hh=s[i]-'A'+10;
-            }
-            if(flag==2)
+                    hh = s2[i]-'A'+10;
                 break;
-        }
-        else
-        {
-            mp[s[i]]=1;
+            }
         }
     }
     scanf("%s",s);
     l=strlen(s);
-    scanf("%s",s+l);
-    l=strlen(s);
+    scanf("%s",s2);
+    l2=strlen(s2);
     mp.clear();
     for(int i=0;i<l;i++)
+        mp[s[i]]=1;
+    for(int i=0;i<l2;i++)
     {
-        if(mp[s[i]])
+        if(s2[i]==s[i]&&(s2[i]>='A'&&s2[i]<='Z'||s2[i]>='a'&&s2[i]<='z'))
         {
             mm=i;
             break;
@@ -51,3 +50,9 @@ int main()
     printf(" %02d:%02d\n",hh,mm);
     return 0;
 }
+/**
+3485djDkxh4hhGE
+2984akDfkkkkggEdsb
+s&hgsfdk
+d&Hyscvnm
+*/

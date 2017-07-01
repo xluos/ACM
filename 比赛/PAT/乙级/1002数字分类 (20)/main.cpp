@@ -21,31 +21,21 @@ int main()
             break;
         case 1:
             if(!(s2%2))
-            {
                 a2+=ans;
-            }
             else
-            {
                 a2-=ans;
-            }
             s2++;
             break;
         case 2:
-            {
-                s3++;
-            }
+            s3++;
             break;
         case 3:
-            {
-                a4+=ans;
-                s4++;
-            }
+            a4+=ans;
+            s4++;
             break;
         case 4:
-            {
-                a5=max(a5,ans);
-                s5++;
-            }
+            a5=max(a5,ans);
+            s5++;
             break;
         }
     }

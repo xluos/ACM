@@ -38,17 +38,12 @@ int main()
             }
             else
             {
-                if(ans.de>=h)
-                {
-                    ans.lei=4;
-                }
-                else if(ans.de>ans.ca)
+                if(ans.de>=ans.ca)
                     ans.lei=3;
                 else
                     ans.lei=4;
             }
-            a[sum]=ans;
-            sum++;
+            a[sum++]=ans;
         }
     }
     sort(a,a+sum,cmp);
