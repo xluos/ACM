@@ -3,6 +3,7 @@
 using namespace std;
 void my_itoa(int n,int r)
 {
+    if(n==0)printf("0");
     stack<int>st;
     while(n)
     {

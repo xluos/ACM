@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #define XDATE 20140906
-#define JIE 2000000
+#define MDATA 18140906
 using namespace std;
 
 int main()
@@ -13,7 +13,7 @@ int main()
         cin>>ans;
         scanf("%d/%d/%d",&y,&m,&d);
         data=y*10000+m*100+d;
-        if(data<XDATE&&XDATE-data<=JIE)
+        if(data<=XDATE&&data>=MDATA)
         {
             sum++;
             if(data>maxx)
@@ -22,6 +22,9 @@ int main()
             {minn=data;mins=ans;}
         }
     }
-    cout<<sum<<' '<<mins<<' '<<maxs<<endl;
+    if(sum)
+        cout<<sum<<' '<<mins<<' '<<maxs<<endl;
+    else
+        cout<<0<<endl;
     return 0;
 }

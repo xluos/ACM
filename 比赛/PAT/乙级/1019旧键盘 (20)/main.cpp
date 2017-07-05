@@ -24,11 +24,16 @@ int main()
                 printf("%c",s[i]-32);
                 flag[s[i]-32]=1;
             }
-            else
+            else if(s[i]>='A'&&s[i]<='Z')
             {
                 flag[s[i]+32]=1;
                 printf("%c",s[i]);
             }
+            else
+            {
+                printf("%c",s[i]);
+            }
+
         }
     }
     cout<<endl;

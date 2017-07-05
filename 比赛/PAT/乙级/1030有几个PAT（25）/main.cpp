@@ -10,7 +10,7 @@ int main()
     {
         if(ch=='P')p++;
         else if(ch=='A')a+=p;
-        else
+        else if(ch=='T')
         {
             sum+=a;
             if(sum>MOD)

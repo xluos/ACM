@@ -6,7 +6,8 @@ int main()
 {
     int mp[300]={0},l;
     char s[40],s2[100005];
-    scanf("%s %s",s,s2);
+    gets(s);
+    gets(s2);
     for(int i=0;i<strlen(s);i++)
     {
         if(s[i]>='A'&&s[i]<='Z')
@@ -31,6 +32,7 @@ int main()
                 printf("%c",s2[i]);
         }
     }
+    cout<<endl;
     return 0;
 }
 /**
