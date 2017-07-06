@@ -13,6 +13,11 @@ int juedg(int a[],int b[],int l)
 }
 void mergepass(int a[],int b[],int k,int n)
 {
+    if(juedg(mubiao,a,n))
+    {
+        printf("Merge Sort\n");
+        flag=1;
+    }
     if(flag==2)return ;
     int i;
     for(i=0;i<=n-k*2;i+=k*2)
@@ -21,8 +26,6 @@ void mergepass(int a[],int b[],int k,int n)
     }
     if(n<k*2)
         merge(a,a+k,a+k,a+n,b);
-//    else if()
-//        copy(a,a+n,b);
     if(flag)
     {
         for(int i=0;i<n;i++)
@@ -32,15 +35,11 @@ void mergepass(int a[],int b[],int k,int n)
         flag=2;
         return ;
     }
-    if(juedg(mubiao,b,n))
-    {
-        printf("Merge Sort\n");
-        flag=1;
-    }
+
 }
 void input()
 {
-        for(int i=0;i<n;i++)
+    for(int i=0;i<n;i++)
         scanf("%d",&yuanshi[i]);
     for(int i=0;i<n;i++)
         scanf("%d",&mubiao[i]);
@@ -55,6 +54,11 @@ int main()
     {
         if(ans[i]<ans[i-1])
         {
+            if(juedg(mubiao,ans,n))
+            {
+                printf("Insertion Sort\n");
+                flag=1;
+            }
             int p=upper_bound(ans,ans+i,ans[i])-ans,q=ans[i];
             copy(ans+p,ans+i,ans+p+1);
             ans[p]=q;
@@ -66,13 +70,18 @@ int main()
                 }
                 return 0;
             }
-            if(juedg(mubiao,ans,n))
-            {
-                printf("Insertion Sort\n");
-                flag=1;
-            }
+
+        }else if(!flag&&i==n-1)
+        {
+             printf("Insertion Sort\n");
+             for(int i=0;i<n-1;i++)
+                printf("%d ",ans[i]);
+             printf("%d\n",ans[n-1]);
+             flag=1;
         }
     }
+    if(!flag)
+    {
     int k=1;
     while(k<n)
     {
@@ -83,6 +92,6 @@ int main()
         k<<=1;
         if(flag==2)
             break;
-    }
+    }}
     return 0;
 }

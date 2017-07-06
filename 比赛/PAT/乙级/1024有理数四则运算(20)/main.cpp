@@ -1,19 +1,22 @@
 #include <bits/stdc++.h>
-
+#define ull  long long
 using namespace std;
-int gcd(int a,int b)
+ull gcd(ull a,ull b)
 {
     return !(a%b)?b:gcd(b,a%b);
 }
-void huajian(int fz,int fm)
+void huajian(ull fz,ull fm)
 {
-    int gy,flag=0;
+    ull gy,flag=0;
     if(fz<0||fm<0)
     {
+        if(!(fz<0&&fm<0))
+        {
+            printf("(-");
+            flag=1;
+        }
         if(fz<0)fz=-fz;
         if(fm<0)fm=-fm;
-        printf("(-");
-        flag=1;
     }
     gy=gcd(fz,fm);
     fz/=gy;fm/=gy;
@@ -24,21 +27,21 @@ void huajian(int fz,int fm)
     }
     else if(fm==1)
     {
-        printf("%d",fz);
+        printf("%lld",fz);
     }
     else if(fz>fm)
     {
-        printf("%d %d/%d",fz/fm,fz%fm,fm);
+        printf("%lld %lld/%lld",fz/fm,fz%fm,fm);
     }
     else
-        printf("%d/%d",fz%fm,fm);
+        printf("%lld/%lld",fz%fm,fm);
     if(flag)
         printf(")");
 }
 int main()
 {
-    int a,b,c,d;
-    scanf("%d/%d %d/%d",&a,&b,&c,&d);
+    ull a,b,c,d;
+    scanf("%lld/%lld %lld/%lld",&a,&b,&c,&d);
     huajian(a,b);
     printf(" + ");
     huajian(c,d);
