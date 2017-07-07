@@ -1,6 +1,57 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+int main()
+{
+    int n,a[1005],b[1005],i,j;
+    cin>>n;
+    for(i=0;i<n;i++)
+        scanf("%d",&a[i]);
+    for(i=0;i<n;i++)
+        scanf("%d",&b[i]);
+    for(i=0;i<n-1&&b[i]<=b[i+1];i++);
+    for(j=i+1;a[j]==b[j]&&j<n;j++);
+    if(j==n)
+    {
+        sort(a,a+i+2);
+        printf("Insertion Sort\n");
+    }
+    else
+    {
+        printf("Merge Sort\n");
+        int flag=1,k=2;
+        while(flag)
+        {
+            if(equal(a,a+n,b))flag=0;
+            int l=0;
+            do
+            {
+                int r=l+k;
+                sort(a+l,a+r);
+                l=r;
+            }while(l<n);
+            k<<=1;
+        }
+    }
+    for(int i=0;i<n-1;i++)
+        printf("%d ",a[i]);
+    printf("%d\n",a[n-1]);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 int yuanshi[105],mubiao[105],n,ans[105],flag=0;
 int juedg(int a[],int b[],int l)
 {
@@ -11,6 +62,7 @@ int juedg(int a[],int b[],int l)
     }
     return 1;
 }
+
 void mergepass(int a[],int b[],int k,int n)
 {
     if(juedg(mubiao,a,n))
@@ -26,6 +78,7 @@ void mergepass(int a[],int b[],int k,int n)
     }
     if(n<k*2)
         merge(a,a+k,a+k,a+n,b);
+    else if()
     if(flag)
     {
         for(int i=0;i<n;i++)
@@ -95,3 +148,4 @@ int main()
     }}
     return 0;
 }
+*/
