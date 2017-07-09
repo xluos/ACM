@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-string DAY[7]={"MON","TUE","TUE","THU","FRI","SAT","SUN"};
+string DAY[7]={"MON","TUE","WED","THU","FRI","SAT","SUN"};
 int main()
 {
     char s[200],s2[100];
@@ -9,14 +9,11 @@ int main()
     int l=strlen(s),l2,flag=0,hh,mm,day;
     scanf("%s",s2);
     l2=strlen(s2);
-    map<char, int>mp;
-    for(int i=0;i<l;i++)
-        mp[s[i]]=1;
     for(int i=0;i<l2;i++)
     {
         if(s2[i]==s[i])
         {
-            if(!flag&&s2[i]>='A'&&s2[i]<='Z')
+            if(!flag&&s2[i]>='A'&&s2[i]<='G')
             {
                 flag=1;
                 day=s2[i]-'A';
@@ -35,9 +32,6 @@ int main()
     l=strlen(s);
     scanf("%s",s2);
     l2=strlen(s2);
-    mp.clear();
-    for(int i=0;i<l;i++)
-        mp[s[i]]=1;
     for(int i=0;i<l2;i++)
     {
         if(s2[i]==s[i]&&(s2[i]>='A'&&s2[i]<='Z'||s2[i]>='a'&&s2[i]<='z'))
