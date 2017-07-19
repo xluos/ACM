@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1500456479 source:c:\users\13605\onedrive\acm\比赛\pat\乙级\1048数字加密(20)\main.cpp
+	<iostream>
+	<algorithm>
+	<cmath>
+	<cstdio>
+	<cstring>
+	<cctype>
+
