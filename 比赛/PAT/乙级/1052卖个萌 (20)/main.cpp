@@ -7,10 +7,8 @@ int main()
     char shou[11][5],yan[11][5],kou[11][5],s[100];
     int ss=0,y=0,kk=0;
     gets(s);
-    s[5]=0;
     for(int i=0,k=0;i<strlen(s);i++)
     {
-        printf("%s",s+1);
         if(s[i]=='[')
         {
             i++;
