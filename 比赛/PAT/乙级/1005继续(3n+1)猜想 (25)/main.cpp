@@ -19,7 +19,7 @@ int _3n(int n)
 }
 int main()
 {
-    int n,a[105];
+    int n,a[105],flag=1;
 
     cin>>n;
     for(int i=0;i<n;i++)
@@ -36,7 +36,18 @@ int main()
     {
         //cout<<"key:"<<it->first<<' '<<"ve:"<<it->second<<endl;
         if(it->second==0)
-            cout<<it->first<<' ';
+        {
+            if(flag)
+            {
+                cout<<it->first;
+                flag=0;
+            }
+            else
+            {
+                cout<<' '<<it->first;
+            }
+        }
     }
+    cout<<endl;
     return 0;
 }
