@@ -38,7 +38,8 @@ int main()
            m++; sum+=avg;
         }
     }
-    printf("The average of %d number%c is ",m,m==1?' ':'s');
+    if(m==1) printf("The average of 1 number is ");
+    else printf("The average of %d numbers is ",m);
     if(m) printf("%.2lf\n",sum/m);
     else printf("Undefined\n");
     return 0;
