@@ -56,8 +56,8 @@ int main()
         cout<<ve[0].ok;
         for(int i=0;i<m;i++)
         {
-            if((ve[i].ok!=ve[0].ok)) break;
-            else cout<<' '<<ve[i].id;
+            if((ve[i].ok==ve[0].ok))cout<<' '<<ve[i].id;
+            else break;
         }
     }
     return 0;
