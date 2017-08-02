@@ -4,64 +4,44 @@ using namespace std;
 
 int main()
 {
-    char shou[11][5],yan[11][5],kou[11][5],s[100];
-    int ss=0,y=0,kk=0;
-    gets(s);
-    for(int i=0,k=0;i<strlen(s);i++)
+    vector<string>ve[3];
+    for(int k=0; k<3; k++)
     {
-        if(s[i]=='[')
+        string s;
+        getline(cin,s);
+        for(int i=0; i<s.size(); i++)
         {
-            i++;
-            for(k=0;s[i+1]!=']';k++,i++)
-                shou[ss][k]=s[i];
-            shou[ss][k]=0;
-            ss++;
+            if(s[i]=='[')
+            {
+                for(int j=i+1;j<s.size(); j++)
+                {
+                    if(s[j]==']')
+                    {
+                        ve[k].push_back(s.substr(i+1,j-i-1));
+                        break;
+                    }
+                }
+            }
         }
     }
-    gets(s);
-    for(int i=0,k=0;i<strlen(s);i++)
-    {
-        if(s[i]=='[')
-        {
-            i++;
-            for(k=0;s[i+1]!=']';k++,i++)
-                yan[y][k]=s[i];
-            yan[y][k]=0;
-            y++;
-        }
-    }
-    gets(s);
-    for(int i=0,k=0;i<strlen(s);i++)
-    {
-        if(s[i]=='[')
-        {
-            i++;
-            for(k=0;s[i+1]!=']';k++,i++)
-                kou[kk][k]=s[i];
-            kou[kk][k]=0;
-            kk++;
-        }
-    }
-    int n,m[6];
+    int n,m[5];
     cin>>n;
+    int hand=ve[0].size(),eye=ve[1].size(),mouth=ve[2].size();
     while(n--)
     {
-        int flag=1;
-        for(int i=0;i<5;i++)
+        for(int i=0; i<5; i++)
         {
             cin>>m[i];
-            if(m[i]<0)
-                flag=0;
+            m[i]--;
         }
-        if(m[0]<ss&&m[4]<ss&&m[1]<y&&m[3]<y&&m[2]<kk&&flag)
+        if(m[0]<hand&&m[1]<eye&&m[2]<mouth&&m[3]<eye&&m[4]<hand&&m[0]>=0&&m[1]>=0&&m[2]>=0&&m[3]>=0&&m[4]>=0)
         {
-            printf("%s(%s%s%s)%s\n",shou[m[0]],yan[m[1]],kou[m[2]],yan[m[3]],shou[m[4]]);
+            cout<<ve[0][m[0]]<<'('<<ve[1][m[1]]<<ve[2][m[2]]<<ve[1][m[3]]<<')'<<ve[0][m[4]]<<endl;
         }
         else
         {
-            printf("Are you kidding me? @\/@\n");
+            cout<<"Are you kidding me? @\\/@"<<endl;
         }
     }
-
     return 0;
 }

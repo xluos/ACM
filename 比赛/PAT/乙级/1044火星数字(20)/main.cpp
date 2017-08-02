@@ -4,12 +4,17 @@ using namespace std;
 string _12q[]= {"tret", "jan","feb","mar","apr","may","jun","jly","aug","sep","oct","nov","dec"};
 string _12h[]= {"tret", "tam","hel","maa","huh","tou","kes","hei","elo","syy","lok","mer","jou"};
 
-int stio(string s[],string ans)
+int stio(string ans)
 {
     for(int i=0; i<13; i++)
     {
-        if(s[i]==ans)
+        if(_12q[i]==ans)
             return i;
+    }
+    for(int i=0; i<13; i++)
+    {
+        if(_12h[i]==ans)
+            return i*13;
     }
     return 0;
 }
@@ -43,10 +48,10 @@ int main()
         {
             ss>>ans;
             t=0;
-            num=stio(_12h,ans);
+            num=stio(ans);
             while(ss>>ans)
-            {t = stio(_12q,ans);}
-            cout<<num*13+t<<endl;
+            {t = stio(ans);}
+            cout<<num+t<<endl;
             ss.clear();
         }
     }

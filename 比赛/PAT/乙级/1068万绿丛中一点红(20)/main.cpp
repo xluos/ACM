@@ -30,7 +30,6 @@ int main()
                     if(abs(mn[x][y]-mn[i][j])<=TOL) {TolOk=0;break;}
                 }
             }
-            //cout<<mn[i][j]<<'\t';
             if(TolOk)
             {
                 if(flag)
@@ -41,14 +40,12 @@ int main()
                 else
                 {
                     cout<<"Not Unique"<<endl;
-                    //cout<<i<<' '<<j<<mn[i][j]<<endl;;
                     return 0;
                 }
             }
         }
-        //cout<<endl;
     }
     if(flag) cout<<"Not Exist"<<endl;
-    else cout<<'('<<X<<", "<<Y<<"): "<<color<<endl;
+    else cout<<'('<<Y<<", "<<X<<"): "<<color<<endl;
     return 0;
 }
