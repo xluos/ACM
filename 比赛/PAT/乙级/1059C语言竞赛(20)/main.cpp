@@ -28,7 +28,6 @@ int main()
     {
         cin>>ans;
         mp[ans]=i+1;
-        cout<<'s';
     }
     cin>>n;
     for(int i=0;i<n;i++)
@@ -39,7 +38,7 @@ int main()
         else if(mp[ans]==0) printf("Are you kidding?\n");
         else if(isPrime(mp[ans])) {printf("Minion\n");mp[ans]=-1;}
         else if(mp[ans]==-1) printf("Checked\n");
-        else printf("Chocolate\n");
+        else {printf("Chocolate\n");mp[ans]=-1;}
 
     }
     return 0;
