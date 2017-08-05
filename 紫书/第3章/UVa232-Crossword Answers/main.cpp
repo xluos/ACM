@@ -16,6 +16,7 @@ int main()
     {
         scanf("%d",&m);
         for(int i=0;i<n;i++) cin>>mn[i];
+        if(count>1) cout<<endl;
         printf("puzzle #%d:\n",count++);
         int num=0;
         printf("Across\n");
