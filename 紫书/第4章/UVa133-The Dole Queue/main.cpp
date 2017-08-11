@@ -27,17 +27,16 @@ int main()
             {
                 printf("%3d",ren[i]);
                 n--;
-
             }
             else
             {
                 printf("%3d%3d",ren[i],ren[j]);
                 n-=2;
-
             }
             ren[i]=0;ren[j]=0;
             if(n) printf(",");
         }
+        cout<<endl;
     }
     return 0;
 }
