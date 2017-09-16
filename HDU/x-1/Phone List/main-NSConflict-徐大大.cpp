@@ -1,14 +1,15 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+
 using namespace std;
-const int MAX = 2;
+const int MAX = 10;
 struct Trie{
     Trie *next[MAX];
     int k;
     Trie()
     {
-        k=0;
+        int k=0;
         for(int i=0;i<MAX;i++)
             next[i] = NULL;
     }
@@ -19,26 +20,26 @@ int judeg(Trie *p)
 {
     for(int i=0;i<MAX;i++)
     {
-        if(p->next[i]) return 0;
+        if(p->next[i]) return 1;
     }
-    return 1;
+    return 0;
 }
 void CerateTrie(char *str)
 {
-    if(flag) return ;
+    //if(flag) return ;
     int len=strlen(str);
     Trie *p = root;
     for(int i=0;i<len;i++)
     {
         int num = str[i]-'0';
+        if(p->k!=0) flag=1;
         if(p->next[num]==NULL)
         {
             p->next[num] = new Trie;
         }
         p=p->next[num];
-        if(p->k!=0) {flag=1;break;}
     }
-    if(!judeg(p))flag = 1;
+        if(judeg(p)) flag = 1;
     p->k = 1;
 }
 void del(Trie *p)
@@ -51,22 +52,26 @@ void del(Trie *p)
 }
 int main()
 {
-    int t=1,flag=0;
-    root = new Trie;
-    char s[11];
-    while(~scanf("%s",s))
+    int w;
+    scanf("%d",&w);
+    while(w--)
     {
-        if(s[0]=='9')
+        int n;
+        char str[11];
+        root = new Trie;
+        flag=0;
+        scanf("%d",&n);
+        for(int i=0;i<n;i++)
         {
-            printf("Set %d is %s\n",t++,flag?"immediately decodable":"not immediately decodable");
-            flag=0;
-            del(root);
-            root = new Trie;
+            scanf("%s",str);
+            CerateTrie(str);
+            for(int i=0;i<=10;i++)
+
+            //cout<<"flag="<<flag<<endl;
         }
-        else
-        {
-            CerateTrie(s);
-        }
+        if(flag) printf("NO\n");
+        else printf("YES\n");
+        del(root);
     }
     return 0;
 }

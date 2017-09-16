@@ -9,7 +9,7 @@ struct Trie{
     int k;
     Trie()
     {
-        int k=0;
+        k=0;
         for(int i=0;i<MAX;i++)
             next[i] = NULL;
     }
@@ -20,13 +20,13 @@ int judeg(Trie *p)
 {
     for(int i=0;i<MAX;i++)
     {
-        if(p->next[i]) return 1;
+        if(p->next[i]) return 0;
     }
-    return 0;
+    return 1;
 }
 void CerateTrie(char *str)
 {
-    //if(flag) return ;
+    if(flag) return ;
     int len=strlen(str);
     Trie *p = root;
     for(int i=0;i<len;i++)
@@ -35,11 +35,12 @@ void CerateTrie(char *str)
         if(p->next[num]==NULL)
         {
             p->next[num] = new Trie;
+            p->next[num]->k = 0;
         }
         p=p->next[num];
         if(p->k!=0) flag=1;
     }
-    if(judeg(p)||p->k==1) flag = 1;
+    if(!judeg(p))flag = 1;
     p->k = 1;
 }
 void del(Trie *p)
@@ -59,13 +60,13 @@ int main()
         int n;
         char str[11];
         root = new Trie;
+        root->k = 0;
         flag=0;
         scanf("%d",&n);
         for(int i=0;i<n;i++)
         {
             scanf("%s",str);
             CerateTrie(str);
-            cout<<"flag="<<flag<<endl;
         }
         if(flag) printf("NO\n");
         else printf("YES\n");
