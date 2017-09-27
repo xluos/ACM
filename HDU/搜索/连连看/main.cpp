@@ -78,7 +78,6 @@ int main()
 		    memset(vis,0,sizeof(vis));
 			scanf("%d %d %d %d",&q1,&q2,&X,&Y);
 			q1--; q2--;X--;Y--;
-			//cout<<Chart[q1][q2]<<' '<<Chart[X][Y]<<endl;
 			if (Chart[q1][q2] != Chart[X][Y]||(Chart[q1][q2]==0&&Chart[q1][q2] == Chart[X][Y])) printf("NO\n");
 			else BFS(q1,q2);
 		}
