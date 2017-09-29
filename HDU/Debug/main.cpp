@@ -1,80 +1,189 @@
 #include <bits/stdc++.h>
-
+//#include <windows.h>
 using namespace std;
-const int MAX = 11;
-char Chart[MAX][MAX];
-int maxx,n;
-int judge(int x,int y)
+const int N  = 22;
+int dir[][2] = {0,1,1,0,0,-1,-1,0};
+char Chart[N][N];
+int vis[N][N],qx,qy;
+int X,Y,n,m;
+struct node{
+    int x,y,step;
+    friend bool operator < (node a,node b)
+    {
+        return a.step > b.step;
+    }
+};
+bool judge(int x,int y)
 {
-    if(Chart[x][y] != '.') return 0;
-    for(int i=x;i<n;i++)
-    {
-        if(Chart[i][y] == '*') return 0;
-        if(Chart[i][y] == 'X') break;
-    }
-    for(int i=x;i>=0;i--)
-    {
-        if(Chart[i][y] == '*') return 0;
-        if(Chart[i][y] == 'X') break;
-    }
-    for(int i=y;i<n;i++)
-    {
-        if(Chart[x][i] == '*') return 0;
-        if(Chart[x][i] == 'X') break;
-    }
-    for(int i=y;i>=0;i--)
-    {
-        if(Chart[x][i] == '*') return 0;
-        if(Chart[x][i] == 'X') break;
-    }
-    return 1;
+    if(x<0||x>=n||y<0||y>=m||Chart[x][y] == '*'||vis[x][y]>4)
+        return false;
+    return true;
 }
 void out()
 {
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                printf("%c",Chart[i][j]);
-            }
-            printf("\n");
-        }
-        printf("\n\n");
-}
-void DFS(int x,int y,int sum)
-{
-    //out();
-    if(sum>maxx) maxx = sum;
+    //system("cls");
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<n;j++)
+        for(int j=0;j<m;j++)
         {
-            if(Chart[i][j] == '.'&&judge(i,j))
+            if(Chart[i][j] == '*') printf("* ");
+            else printf("%d ",vis[i][j]);
+        }
+        printf("\n");
+    }
+}
+int BFS(int x,int y)
+{
+    node q,p;
+    priority_queue<node>Q;
+    q.x = x;
+    q.y = y;
+    q.step = 0;
+    Q.push(q);
+    vis[x][y] = 5;
+    while(!Q.empty())
+    {
+        q = Q.top();
+        Q.pop();
+        //out();
+        if(q.x == X && q.y == Y)
+        {
+            return q.step;
+        }
+        //cout<<q.x<<' '<<q.y<<' '<<q.step<<' '<<Chart[q.x][q.y]<<endl;
+        for(int i=0;i<4;i++)
+        {
+            p.x = q.x + dir[i][0];
+            p.y = q.y + dir[i][1];
+            p.step = q.step + 1;
+            if(p.x == X && p.y == Y)
             {
-                Chart[i][j] = '*';
-                DFS(i,j,sum+1);
-                Chart[i][j] = '.';
+                return p.step;
+            }
+            if(judge(p.x,p.y))
+            {
+                if(Chart[p.x][p.y] == '.')
+                {
+                    vis[p.x][p.y] = 5;
+                    Q.push(p);
+                    //cout<<p.x<<' '<<p.y<<' '<<p.step<<' '<<Chart[p.x][p.y]<<endl;
+                }
+                else if(judge(p.x + dir[i][0],p.y + dir[i][1]))
+                {
+                    node ans;
+                    ans.x = p.x + dir[i][0];
+                    ans.y = p.y + dir[i][1];
+                    ans.step = p.step;
+                    vis[ans.x][ans.y] = 5;
+//                    if(!((Chart[p.x][p.y] == '|' && i&1 == q.step&1)||(Chart[p.x][p.y] == '-' && i&1 != q.step&1)))
+//                        ans.step++;
+                    if(q.step&1)
+                    {
+                        if(i&1)
+                        {
+                            if(Chart[p.x][p.y] == '|')
+                                ans.step++;
+                        }
+                        else
+                        {
+                            if(Chart[p.x][p.y] == '-')
+                                ans.step++;
+                        }
+                    }
+                    else
+                    {
+                        if(i&1)
+                        {
+                            if(Chart[p.x][p.y] == '-')
+                                ans.step++;
+                        }
+                        else
+                        {
+                            if(Chart[p.x][p.y] == '|')
+                                ans.step++;
+                        }
+                    }
+                    Q.push(ans);
+                    if(ans.x == X && ans.y == Y)
+                    {
+                        return ans.step;
+                    }
+                    //cout<<ans.x<<' '<<ans.y<<' '<<ans.step<<' '<<Chart[ans.x][ans.y]<<endl;
+                }
             }
         }
     }
+    return -1;
 }
 int main()
 {
-    while(scanf("%d",&n),n)
+    while(~scanf("%d %d",&n,&m))
     {
-        getchar();
-        maxx = 0;
         memset(Chart,0,sizeof(Chart));
-        for(int i=0;i<n;i++)
+        memset(vis,0,sizeof(vis));
+        for(int i = 0;i<n;i++)
         {
-            for(int j=0;j<n;j++)
-            {
-                scanf("%c",&Chart[i][j]);
-            }
             getchar();
+            for(int j = 0;j<m;j++)
+            {
+               scanf("%c",&Chart[i][j]);
+               if(Chart[i][j] == 'S')
+               {
+                   Chart[i][j] = '.';
+                   qx = i; qy = j;
+               }
+               else if(Chart[i][j] == 'T')
+               {
+                   Chart[i][j] = '.';
+                   X = i; Y = j;
+               }
+
+            }
         }
-        DFS(0,0,0);
-        cout<<maxx<<endl;
+        //cout<<X<<' '<<Y<<endl;
+        cout<<BFS(qx,qy)<<endl;
     }
     return 0;
 }
+/*
+5 5
+**..T
+**.*.
+..|..
+.*.*.
+S....
+
+3 4
+S|.|
+-T-.
+.|..
+
+20 20
+S.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.|
+|.|.|.|.|.|.|.|.|.|.
+.|.|.|.|.|.|.|.|.|.T
+
+
+3 4
+T...
+*-*S
+*.|.
+
+*/
