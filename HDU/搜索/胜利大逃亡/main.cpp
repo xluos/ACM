@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-const int N = 50;
+const int N = 55;
 char Chart[N][N][N];
 int vis[N][N][N],n,m,c,qx,qy,qz,X,Y,Z,t;
 int dir[][3] = {0,0,1,0,0,-1,0,1,0,0,-1,0,1,0,0,-1,0,0};
@@ -10,7 +10,7 @@ struct node{
 };
 bool judge(int x,int y,int z)
 {
-    if(x<0||x>=n||y<0||y>=m||z<0||z>=c||vis[x][y][z]||Chart[x][y][z] == 1)
+    if(x<0||x>=c||y<0||y>=n||z<0||z>=m||vis[x][y][z]||Chart[x][y][z] == 1)
         return false;
     return true;
 }
@@ -44,7 +44,7 @@ int BFS(int x,int y,int z)
             }
         }
     }
-    return 1001;
+    return -1;
 }
 int main()
 {
@@ -59,7 +59,6 @@ int main()
         {
             for(int i=0;i<n;i++)
             {
-                getchar();
                 for(int j=0;j<m;j++)
                 {
                     scanf("%d",&Chart[k][i][j]);
