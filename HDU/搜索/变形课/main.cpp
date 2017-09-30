@@ -5,11 +5,12 @@ struct node{
     int data;
     int vis;
 }ans;
-int flag;
+int flag,m;
 vector<node>ve[26];
-void dfs(int head,int num)
+void dfs(int head)
 {
-    if(ve[head][num].data == 12);
+//    cout<<head<<' '<<num<<' '<<ve[head][num].data<<endl;
+    if(head == 12)
     {
         flag = 1;
         printf("Yes.\n");
@@ -20,7 +21,7 @@ void dfs(int head,int num)
         if(flag) return ;
         if(ve[head][i].vis) continue;
         ve[head][i].vis = 1;
-        dfs(ve[head][i].data,0);
+        dfs(ve[head][i].data);
         ve[head][i].vis = 0;
     }
     return ;
@@ -37,14 +38,16 @@ int main()
     {
         if(s[0] == '0')
         {
-            if(ve[1].size() > 0) dfs(1,0);
+            if(ve[1].size() > 0&&m) dfs(1);
             if(!flag) printf("No.\n");
             flag = 0;
+            m = 0;
             del();
             continue;
         }
         ans.data = s[strlen(s)-1]-'a';
         ans.vis = 0;
+        if(ans.data == 12) m = 1;
         ve[s[0]-'a'].push_back(ans);
     }
     return 0;
