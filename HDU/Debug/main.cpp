@@ -76,7 +76,7 @@ int Box_BFS(int x,int y)
                 vis[p.x][p.y][q.x-dir[i][0]][q.y-dir[i][1]] = 1;
                 p.mx = q.x; p.my = q.y;
                 Q.push(p);
-                printf("BOX: (%d ,%d)->(%d ,%d)\n",q.x,q.y,p.x,p.y);
+                //printf("BOX: (%d ,%d)->(%d ,%d)\n",q.x,q.y,p.x,p.y);
             }
         }
     }
