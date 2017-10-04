@@ -48,13 +48,11 @@ int BFS(int x,int y)
                 {
                     int ans = 1<<(Chart[p.x][p.y] - 'A' + 1);
                     if((p.key&ans) == 0||!p.key) flag = 0;
-                    //printf("%d %d %d flag = %d %d\n",p.key,ans,p.key&ans,flag ,(p.key&ans) == 0);
                 }
                 if(flag&&!vis[p.x][p.y][p.key])
                 {
                     vis[p.x][p.y][p.key] = 1;
                     Q.push(p);
-                    //printf("(%d ,%d) %c key == %d step == %d \n",p.x,p.y,Chart[p.x][p.y],p.key,p.step);
                 }
             }
 
