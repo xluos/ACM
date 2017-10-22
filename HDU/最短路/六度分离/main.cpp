@@ -29,7 +29,6 @@ bool judge()
         {
             if(Chara[i][j] > 7)
             {
-                cout<<Chara[i][j]<<endl;
                 return false;
             }
         }
