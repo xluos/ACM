@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+
 int n,m;
-int dir[][2]={0,1,0,-1,1,0,1,1,1,-1,-1,0,-1,1,-1,-1};
+int dir[8][2]={0,1,0,-1,1,0,1,1,1,-1,-1,0,-1,1,-1,-1};
 char Chart[105][105];
 void DFS(int x,int y)
 {
