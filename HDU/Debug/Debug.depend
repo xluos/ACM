@@ -4,8 +4,6 @@
 
 1507113426 ++.h>
 
-1507965649 source:/home/xluos/Desktop/ACM/HDU/Debug/main.cpp
-	<stdio.h>
-	<string.h>
-	<algorithm>
+1509870214 source:/home/xluos/Desktop/ACM/HDU/Debug/main.cpp
+	<bits/stdc++.h>
 
