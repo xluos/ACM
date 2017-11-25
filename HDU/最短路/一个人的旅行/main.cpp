@@ -27,7 +27,7 @@ void Dijkstra(int src)
                 ans = dis[j];
             }
         }
-        cout<<"K = "<<k<<endl;
+        //cout<<"K = "<<k<<endl;
         vis[k] = 1;
         if(ans == INF) break;
         for(int j =0; j<m; j++)
