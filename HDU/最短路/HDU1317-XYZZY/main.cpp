@@ -4,7 +4,7 @@ using namespace std;
 const int MAX = 105;
 const int INF = 0x3f3f3f3f;
 
-int n,w,m,ans,sec[MAX],dis[MAX],vis[MAX];
+int flag = 0,n,w,m,ans,sec[MAX],dis[MAX],vis[MAX];
 struct node{
     int v;
     int w;
@@ -17,8 +17,8 @@ void SPFA(int sre)
     int q;
     queue<int>Q;
     memset(dis,0xc0,sizeof(dis));
-    memset(vis,INF,sizeof(vis));
-    dis[sre] = 0;
+    memset(vis,0,sizeof(vis));
+    dis[sre] = 100;
     vis[sre] = 1;
     Q.push(sre);
     while(!Q.empty())
@@ -28,10 +28,11 @@ void SPFA(int sre)
         vis[q] = 0;
         for(int i=0;i < ve[q].size();i++)
         {
-            if(dis[ve[q][i].v] < dis[q] + ve[q][i].w)
+            if(dis[ve[q][i].v] < dis[q] + ve[q][i].w && dis[q] + ve[q][i].w > 0)
             {
                 dis[ve[q][i].v] = dis[q] + ve[q][i].w;
-                if(!vis[ve[q][i].v] && sec[ve[q][i].v] >= 0)
+                if(sec[ve[q][i].v] == -1) dis[ve[q][i].v] = INF;
+                if(!vis[ve[q][i].v] && sec[ve[q][i].v] >= -1)
                 {
                     Q.push(ve[q][i].v);
                     vis[ve[q][i].v] = 1;
@@ -45,10 +46,10 @@ int main()
 {
     while(scanf("%d",&n),~n)
     {
-        int i = 1;
+        flag = 0;
         memset(sec,0,sizeof(sec));
-        while(scanf("%d %d",&w,&m),w+m)
-        {
+        for(int i=1;i<=n;i++)
+        {scanf("%d %d",&w,&m);
             no.w = w;
             for(int j=0;j<m;j++)
             {
@@ -57,15 +58,9 @@ int main()
                 no.v = ans;
                 ve[i].push_back(no);
             }
-            i++;
         }
         SPFA(1);
-        for(int i=0;i<n;i++)
-        {
-            cout<<"dis== "<<dis[i]<<endl;
-        }
-        cout<<dis[n]<<endl;
-        if(dis[n] + 100 > 0)
+        if(dis[n] > 0)
         {
             printf("winnable\n");
         }
@@ -73,6 +68,20 @@ int main()
         {
             printf("hopeless\n");
         }
+        for(int i=0;i<MAX;i++)
+        {
+            ve[i].clear();
+        }
     }
     return 0;
 }
+/**
+6
+0 2 2 5
+1 1 3
+1 1 4
+1 1 2
+-100 1 6
+0 0
+hopeless
+*/
