@@ -7,37 +7,6 @@ const int INF = 0x3f3f3f3f;
 int n,m,q,flag2;
 int Chara[MAX][MAX],vis[MAX],dis[MAX],exist[MAX];
 
-void Dijkstra(int sre)
-{
-    memset(vis,0,sizeof(vis));
-    for(int i=0; i<n; i++)
-    {
-        dis[i] = Chara[sre][i];
-    }
-    dis[sre] = 0;
-    vis[sre] = 1;
-    for(int i=0; i<n; i++)
-    {
-        int k,minn = INF;
-        for(int j=0; j<n; j++)
-        {
-            if(exist[j]&&!vis[j]&&dis[j] < minn)
-            {
-                minn = dis[j];
-                k = j;
-            }
-        }
-        if(minn == INF) break;
-        vis[k] = 1;
-        for(int j=0; j<n; j++)
-        {
-            if(exist[j] && !vis[j] && dis[j] > dis[k] + Chara[k][j])
-            {
-                dis[j] = dis[k] + Chara[k][j];
-            }
-        }
-    }
-}
 void Floyd(int k)
 {
     for(int i=0;i<n;i++)
@@ -61,12 +30,16 @@ int main()
         memset(Chara,INF,sizeof(Chara));
         memset(exist,0,sizeof(exist));
         int u,v,w;
+        for(int i=0;i<n;i++)
+        {
+            Chara[i][i] = 0;
+        }
         for(int i=0; i<m; i++)
         {
             scanf("%d %d %d",&u,&v,&w);
             if(Chara[u][v] > w)
             {
-                Chara[u][v] > w;
+                Chara[u][v] = w;
             }
         }
         for(int i=0; i<q; i++)
@@ -78,11 +51,10 @@ int main()
                 scanf("%d %d",&u,&v);
                 if(exist[u] && exist[v])
                 {
-                    //Dijkstra(u);
-                    if(dis[v] == INF)
+                    if(Chara[u][v] == INF)
                         printf("No such path\n");
                     else
-                        printf("%d\n",dis[v]);
+                        printf("%d\n",Chara[u][v]);
 
                 }
                 else
