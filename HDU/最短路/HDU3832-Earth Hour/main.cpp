@@ -61,7 +61,7 @@ int main()
         {
             scanf("%d %d %d",&coordinate[i].x,&coordinate[i].y,&coordinate[i].r);
         }
-        //å»ºå›¾
+        //½¨Í¼
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)

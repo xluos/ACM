@@ -15,7 +15,7 @@ vector<node>ve[MAX];
 void SPFA(int sre,int T)
 {
     memset(vis,0,sizeof(vis));
-    memset(dis,0,sizeof(dis));
+    memset(dis,INF,sizeof(dis));
     dis[sre] = 0;
     vis[sre] = 1;
     queue<int>Q;
@@ -28,10 +28,10 @@ void SPFA(int sre,int T)
         vis[q] = 0;
         for(int i=0;i<ve[q].size();i++)
         {
-            int k = ve[q][i].v,w = ve[q][i].w;
-            if(ve[q][i].c >= T && dis[q] > dis[k] + w)
+            int k = ve[q][i].v,w = ve[q][i].w,cc = ve[q][i].c;
+            if(cc >= T && dis[k] > dis[q] + w)
             {
-                dis[q] = dis[k] + w;
+                dis[k] = dis[q] + w;
                 if(!vis[k])
                 {
                     vis[k] = 1;
@@ -61,16 +61,17 @@ int main()
             cap[i] = c;
         }
         sort(cap,cap+m);
-        for(int i=0;i<m;i++) cout<<cap[i]<<' ';
-        int l = 0,r = m-1,mid=0;
-        while(l<r)
+        //for(int i=0;i<m;i++) cout<<cap[i]<<' ';
+        int l = 0,r = m-1,mid=0,ANS = cap[0];
+        while(l<=r)
         {
-            mid = (l+r)/2+1;
+            //cout<<l<<' '<<r<<' '<<mid<<endl;
+            mid = (l+r)/2;
             SPFA(1,cap[mid]);
-            if(dis[n] <= t) l = mid;
-            else r = mid;
+            if(dis[n] <= t) {ANS = cap[mid]; l = mid + 1;}
+            else r = mid - 1;
         }
-        cout<<cap[mid]<<endl;
+        cout<<ANS<<endl;
         for(int i=0;i<MAX;i++)
         {
             ve[i].clear();
@@ -78,3 +79,14 @@ int main()
     }
     return 0;
 }
+/**
+
+2
+2 1 10
+1 2 13 10
+4 4 30
+1 2 1000 15
+2 4 999 6
+1 3 100 15
+3 4 99 4
+*/
