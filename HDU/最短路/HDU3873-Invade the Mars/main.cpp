@@ -22,12 +22,12 @@ void SPFA(int sre)
         q = Q.front();
         Q.pop();
         vis[q] = 0;
-        for(int i=0;i<MAX;i++)
+        for(int i=1;i<=n;i++)
         {
             if(!vis[i] && dis[i] > dis[q] + Chara[q][i])
             {
                 dis[i] = dis[q] + Chara[q][i];
-                if(!mo[i]) continue;
+                if(mo[i] > 0) continue;
                 else
                 {
                     if(!vis[i])
@@ -77,7 +77,7 @@ int main()
             for(int j=0;j<l;j++)
             {
                 scanf("%d",&li);
-                ve[i].push_back(li);
+                ve[li].push_back(i);
             }
         }
         SPFA(1);

@@ -1,97 +1,92 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-const int MAX = 205;
-const int INF = 0x2a2a2a2a;
-struct node
+const int MAX = 3005;
+const int INF = 0x3f3f3f3f;
+
+int n,m;
+int Chara[MAX][MAX],vis[MAX],dis[MAX],mo[MAX],mp[MAX];
+vector<int>ve[MAX];
+
+void SPFA(int sre)
 {
-    int x,y,r;
-};
-int n;
-int Chara[MAX][MAX],vis[MAX],diss[3][MAX];
-node coordinate[MAX];
-int judge(int i,int j)
-{
-    if(i == j) return 0;
-    double X2 = (coordinate[i].x - coordinate[j].x)*(coordinate[i].x - coordinate[j].x);
-    double Y2 = (coordinate[i].y - coordinate[j].y)*(coordinate[i].y - coordinate[j].y);
-    if(sqrt(X2 + Y2) <= coordinate[i].r +coordinate[j].r)
-        return 1;
-    return INF;
-}
-void Dijkstra(int sre,int dis[])
-{
+    memset(dis,INF,sizeof(dis));
     memset(vis,0,sizeof(vis));
-    for(int i=0; i<n; i++)
-    {
-        dis[i] = Chara[sre][i];
-    }
+
+    queue<int>Q;
+    int q;
     dis[sre] = 0;
     vis[sre] = 1;
-    for(int i=0; i<n; i++)
+    Q.push(sre);
+    while(!Q.empty())
     {
-        int k,minn = INF;
-        for(int j=0; j<n; j++)
+        q = Q.front();
+        Q.pop();
+        vis[q] = 0;
+        for(int i=1;i<=n;i++)
         {
-            if(!vis[j] && dis[j] < minn)
+            int maxx = max(dis[q] + Chara[q][i],mp[i]);
+            if(!vis[i] && dis[i] > maxx)
             {
-                k = j;
-                minn = dis[j];
-            }
-        }
-        if(minn == INF) break;
-        vis[k] = 1;
-        for(int j=0; j<n; j++)
-        {
-            if(!vis[j] && dis[j] > dis[k] + Chara[k][j])
-            {
-                dis[j] = dis[k] + Chara[k][j];
+                dis[i] = maxx;
+                if(mo[i] > 0) continue;
+                else
+                {
+                    if(!vis[i])
+                    {
+                        Q.push(i);
+                        vis[i] = 1;
+                    }
+                    for(int j=0;j<ve[i].size();j++)
+                    {
+                        int ans = ve[i][j];
+                        mo[ans]--;
+                        if(!mo[ans])
+                        {
+                            if(dis[ans]==INF || dis[i] > dis[ans])
+                                mp[ans] = dis[i];
+                            if(!vis[ans])
+                                Q.push(ans);
+                        }
+                    }
+                }
+
             }
         }
     }
 }
+
 int main()
 {
-    int w;
-    scanf("%d",&w);
-    while(w--)
+    int t;cin>>t;
+    while(t--)
     {
-        scanf("%d",&n);
-        for(int i=0; i<n; i++)
+        memset(Chara,0x3f,sizeof(Chara));
+        memset(mo,0,sizeof(mo));
+        memset(mp,0,sizeof(mp));
+        scanf("%d %d",&n,&m);
+        for(int i=0;i<m;i++)
         {
-            scanf("%d %d %d",&coordinate[i].x,&coordinate[i].y,&coordinate[i].r);
-        }
-        //建图
-        for(int i=0; i<n; i++)
-        {
-            for(int j=0; j<n; j++)
+            int a,b,w;
+            scanf("%d %d %d",&a,&b,&w);
+            if(Chara[a][b] > w)
             {
-                int ans = judge(i,j);
-                Chara[i][j] = ans;
-                Chara[j][i] = ans;
+                Chara[a][b] = w;
             }
         }
-        Dijkstra(0,diss[0]);
-        Dijkstra(1,diss[1]);
-        Dijkstra(2,diss[2]);
-        int minn = INF;
-        for(int i=0; i<n; i++)
+        for(int i=1;i<=n;i++)
         {
-            int sum = diss[0][i] + diss[1][i] + diss[2][i];
-            //cout<<"sum == "<<sum<<endl;
-            if(minn > sum)
+            int l,li;
+            scanf("%d",&l);
+            mo[i] = l;
+            for(int j=0;j<l;j++)
             {
-                minn = sum;
+                scanf("%d",&li);
+                ve[li].push_back(i);
             }
         }
-        if(minn >= INF)
-        {
-            printf("-1\n");
-        }
-        else
-        {
-            printf("%d\n",n - minn - 1);
-        }
+        SPFA(1);
+        cout<<dis[n]<<endl;
     }
     return 0;
 }
