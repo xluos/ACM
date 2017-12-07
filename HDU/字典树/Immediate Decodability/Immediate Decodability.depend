@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1512474791 source:c:\users\13605\onedrive\acm\hdu\x-1\immediate decodability\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+
